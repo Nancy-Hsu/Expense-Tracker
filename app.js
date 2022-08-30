@@ -4,14 +4,22 @@ if (process.env.NODE_ENV !== 'production') {
 }
 require('./config/mongoose')
 const exphbs = require('express-handlebars')
+const helpers = require('handlebars-helpers')()
 
 const router = require('./routes')
 
 const app = express()
 const port = 3000
 
-app.engine('hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
+app.engine('hbs', exphbs.engine({
+  defaultLayout: 'main', extname: '.hbs', helpers: {
+    dateTransfer: function (date) {
+      return date.toISOString().slice(0, 10)
+    }
+  }
+}))
 app.set('view engine', 'hbs')
+
 app.use(express.static('public'))
 
 

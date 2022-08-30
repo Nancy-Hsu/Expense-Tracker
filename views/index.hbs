@@ -6,26 +6,28 @@
 
 <div class="row mt-3">
   <div class="col-md-6 m-auto bg-light">
-    <nav id="navbar-example2" class=" mt-2 navbar bg-warning px-3 mb-3">
+    <nav id="navbar-example2" class=" my-2 navbar bg-warning px-3 mb-3">
       <a class="navbar-brand" href="#">消費明細</a>
     </nav>
-    <div class="expense-list ">
+    <div class="expense-list mb-2">
       <ul class="list-group list-group-flush">
         {{#each records}}
 
-        <li class="list-group-item list-group-item-action list-group-item-secondary d-flex align-items-center justify-content-around">
+        <li
+          class="list-group-item list-group-item-action list-group-item-secondary d-flex align-items-center justify-content-around">
           <i class="category_icon {{ this.categoryId.icon }}"></i>
           <div class="w-25 d-flex flex-column ">
             <h3>
               {{this.name}}
-            </h3><small class="text-muted">{{ this.date }}</small>
+            </h3>
+            <small class="date text-muted" >{{dateTransfer this.date }}</small>
           </div>
           <p>{{ this.amount }}</p>
           <a href=""><button class="btn btn-dark mx-2">修改</button></a>
           <a href=""><button class="btn btn-dark">刪除</button></a>
-          </li>
         </li>
-        
+        </li>
+
 
         {{/each}}
       </ul>
@@ -35,19 +37,25 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="col-md-6 m-auto bg-light">
+    <button class="btn btn-success w-100 m-2">新增項目</button>
+  </div>
+</div>
+
 
 <div class="container bg-light">
 
 </div>
 
 <style>
-
   .expense-list {
-    height: 300px;
+    height: 200px;
     overflow-y: scroll;
   }
+
   .category_icon {
     font-size: 3rem;
-    color: rgb(119,140,99);
+    color: rgb(119, 140, 99);
   }
 </style>
