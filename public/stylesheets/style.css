@@ -1,4 +1,11 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Aboreto', cursive;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
 .fa,
 .fas {
   font-weight: 900;
 }
+

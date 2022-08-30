@@ -1,9 +1,27 @@
 const express = require('express')
 const router = express.Router()
+const Record = require('../../models/record')
+const category = require('../../models/category')
 
 
-router.get('/', (req,res) => {
-  res.render('index')
+router.get('/', (req, res) => {
+
+  category.find()
+    .lean()
+    .then(categories => {
+      Record.find()
+        .populate('categoryId')
+        .lean()
+        // .sort({ id })
+        .then(records => {
+          res.render('index', { records, categories })
+        }).catch(err => console.log(err))
+
+    })
+
+
+
+
 })
 
 module.exports = router

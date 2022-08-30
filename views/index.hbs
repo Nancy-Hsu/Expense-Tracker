@@ -1,1 +1,48 @@
-<h1>hi</h1>
+<div class="row mt-3">
+  <div class="col-md-5 m-auto bg-light ">
+    <p>總花費：<span class="fs-6 "></span></p>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-md-6 m-auto bg-light">
+    <nav id="navbar-example2" class=" mt-2 navbar bg-warning px-3 mb-3">
+      <a class="navbar-brand" href="#">消費明細</a>
+    </nav>
+    <div class="expense-list ">
+      <ul class="list-group list-group-flush">
+        {{#each records}}
+
+        <li class="list-group-item list-group-item-action list-group-item-secondary d-flex align-items-center justify-content-around">
+          <i class="{{ this.categoryId.icon }}"></i>
+          <div class="w-25 d-flex flex-column ">
+            <h3>
+              {{this.name}}
+            </h3><small class="text-muted">{{ this.date }}</small>
+          </div>
+          <p>{{ this.amount }}</p>
+          <a href=""><button class="btn btn-dark mx-2">修改</button></a>
+          <a href=""><button class="btn btn-dark">刪除</button></a>
+          </li>
+        </li>
+        
+
+        {{/each}}
+      </ul>
+
+    </div>
+
+  </div>
+</div>
+
+
+<div class="container bg-light">
+
+</div>
+
+<style>
+  .expense-list {
+    height: 300px;
+    overflow-y: scroll;
+  }
+</style>
