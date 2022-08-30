@@ -14,7 +14,14 @@ router.get('/', (req, res) => {
         .lean()
         // .sort({ id })
         .then(records => {
-          res.render('index', { records, categories })
+
+          let totalAmount = 0
+          records.map(record => {
+            totalAmount += record.amount
+          })
+
+
+          res.render('index', { records, categories, totalAmount })
         }).catch(err => console.log(err))
 
     })
