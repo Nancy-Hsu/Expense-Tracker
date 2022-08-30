@@ -6,11 +6,11 @@ const db = require('../../config/mongoose')
 const Category = require('../category')
 
 const CATEGORY = {
-  家居: "https://fontawesome.com/icons/home?style=solid",
-  交通: "https://fontawesome.com/icons/shuttle-van?style=solid",
-  娛樂: "https://fontawesome.com/icons/grin-beam?style=solid",
-  飲食: "https://fontawesome.com/icons/utensils?style=solid",
-  其他: "https://fontawesome.com/icons/pen?style=solid"
+  家居: "fa-solid fa-house",
+  交通: "fa-solid fa-van-shuttle",
+  娛樂: "fa-solid fa-face-grin-beam",
+  飲食: "fa-solid fa-utensils",
+  其他: "fa-solid fa-pen"
 }
 
 const category = Object.entries(CATEGORY).map(item =>

@@ -14,7 +14,7 @@
         {{#each records}}
 
         <li class="list-group-item list-group-item-action list-group-item-secondary d-flex align-items-center justify-content-around">
-          <i class="{{ this.categoryId.icon }}"></i>
+          <i class="category_icon {{ this.categoryId.icon }}"></i>
           <div class="w-25 d-flex flex-column ">
             <h3>
               {{this.name}}
@@ -41,8 +41,13 @@
 </div>
 
 <style>
+
   .expense-list {
     height: 300px;
     overflow-y: scroll;
+  }
+  .category_icon {
+    font-size: 3rem;
+    color: rgb(119,140,99);
   }
 </style>
