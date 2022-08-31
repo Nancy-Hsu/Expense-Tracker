@@ -13,8 +13,6 @@ const SEED_USER = {
   password: '12345678'
 }
 
-
-
 db.on('error', () => {
   console.log('mongodb error!')
 })
@@ -32,7 +30,7 @@ db.once('open', () => {
             return Record.create({
               name: categories[i].name,
               date: Date.now(),
-              amount: (i+1) * 100,
+              amount: (i + 1) * 100,
               userId,
               categoryId: categories[i]._id
             })
@@ -43,8 +41,5 @@ db.once('open', () => {
           console.log('done.')
           process.exit()
         })
-        
     })
-    
 })
-

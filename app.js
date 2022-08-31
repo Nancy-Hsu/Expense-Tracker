@@ -5,16 +5,16 @@ if (process.env.NODE_ENV !== 'production') {
 require('./config/mongoose')
 const exphbs = require('express-handlebars')
 const helpers = require('handlebars-helpers')()
+const methodOverride = require('method-override')
 
 const router = require('./routes')
-
 const app = express()
 const port = 3000
 
-
-
 app.engine('hbs', exphbs.engine({
-  defaultLayout: 'main', extname: '.hbs', helpers: {
+  defaultLayout: 'main',
+  extname: '.hbs',
+  helpers: {
     dateTransfer: function (date) {
       return date.toISOString().slice(0, 10)
     }
@@ -22,15 +22,9 @@ app.engine('hbs', exphbs.engine({
 }))
 app.set('view engine', 'hbs')
 
-app.use(express.urlencoded({ extended:true }))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
-
-
-
-
-
-
-
+app.use(methodOverride('_method'))
 
 app.use(router)
 
