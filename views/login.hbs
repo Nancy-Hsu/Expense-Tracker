@@ -1,5 +1,63 @@
+<div class="row mt-5 ">
+  <div class="col-md-4 m-auto bg-light bg-opacity-25 shadow-lg rounded">
+    <h1 class="text-center mt-2 text-light">Sign in</h2>
+    <hr >
+    <form action="/user/login" method="POST" id="login-form">
+
+    <div id="user-input" class="m-auto my-3 p-2 d-flex w-75 shadow-lg">
+      <i class="fa-solid fa-user mx-2 pt-1"></i>
+      <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+      </div>
+      <div id="user-input" class="m-auto my-3 p-2 d-flex w-75 shadow-lg">
+        <i class="fas fa-unlock-alt mx-2 pt-1"></i>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+      </div>
+
+      <div  class="m-auto my-3 p-2 d-flex w-75">
+        <button class="btn w-100 shadow-lg" onclick="formCheck()">Login</button>
+      </div>
+    </form>
+    <p class="text-center ">還沒有帳號？<a href="/user/register" class="registerMsg">立即加入</a></p>
+    
+  </div>
+</div>
+
 <style>
+  #user-input {
+    background-color: white;
+    border: 1px solid #DDD;
+    border-radius: 10px;
+  }
+  #user-input input {
+    border: none;
+  }
+  #user-input i {
+    
+    font-size: 1.5rem;
+  }
+  
+  #user-input i {
+    color: darkolivegreen;
+    font-size: 1.5rem;
+  }
+
+  #login-form button {
+    background-color: indianred;
+    color: blanchedalmond;
+  }
+
+  .registerMsg{
+    color:indianred;
+  }
+  .registerMsg:hover{
+    color:blanchedalmond;
+  }
 
   </style>
 
-  
+  <script>
+    const formCheck = () => {
+      const form = document.querySelector('#login-form')
+      form.classList.add('was-validated')
+    }
+  </script>

@@ -1,0 +1,71 @@
+<div class="row mt-5 ">
+  <div class="col-md-4 m-auto bg-light bg-opacity-25 shadow-lg rounded">
+    <h3 class="text-center mt-2 text-light">Sign up</h3>
+      <hr>
+      <form action="/user/" method="POST" id="register-form">
+
+        <div id="user-input" class="m-auto my-3 p-2 d-flex w-75 shadow-lg">
+          <i class="fa-solid fa-user mx-2 pt-1"></i>
+          <input type="text" id="name" name="name" class="form-control" placeholder="Name" required>
+        </div>
+        
+        <div id="user-input" class="m-auto my-3 p-2 d-flex w-75 shadow-lg">
+          <i class="fas fa-envelope mx-2 pt-1"></i>
+          <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+        </div>
+        <div id="user-input" class="m-auto my-3 p-2 d-flex w-75 shadow-lg">
+          <i class="fas fa-lock mx-2 pt-1"></i>
+          <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+        </div>
+
+        <div id="user-input" class="m-auto my-3 p-2 d-flex w-75 shadow-lg">
+          <i class="fas fa-unlock-alt mx-2 pt-1"></i>
+          <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="ConfirmPassword" required>
+        </div>
+
+        <div class="m-auto my-3 p-2 d-flex w-75">
+          <button class="btn w-100 shadow-lg" onclick="formCheck()">Login</button>
+        </div>
+      </form>
+      <p class="text-center ">已經有帳號了？<a href="/user/login" class="loginMsg">立即登入</a></p>
+  </div>
+</div>
+
+<style>
+  #user-input {
+    background-color: rgb(222, 218, 218);
+    border: 1px solid #DDD;
+    border-radius: 10px;
+  }
+
+  #user-input input {
+    border: none;
+    background-color: rgb(222, 218, 218);
+
+  }
+
+  #user-input i {
+    color: indianred;
+    font-size: 1.5rem;
+  }
+
+  #register-form button {
+    background-color: darkolivegreen;
+    color: blanchedalmond;
+  }
+
+  .loginMsg{
+    color:indianred;
+  }
+  .loginMsg:hover{
+    color:blanchedalmond;
+  }
+
+</style>
+
+<script>
+  const formCheck = () => {
+    const form = document.querySelector('#register-form')
+    form.classList.add('was-validated')
+  }
+</script>
