@@ -26,7 +26,7 @@
             <small class="date text-muted">{{dateTransfer this.date }}</small>
           </div>
           <p>{{ this.amount }}</p>
-          <a href="./record/{{this._id}}?_method=PUT"><button class="btn btn-dark mx-2">修改</button></a>
+          <a href="./record/{{this._id}}/edit"><button class="btn btn-dark mx-2">修改</button></a>
 
           <form action="./record/{{this._id}}?_method=DELETE" method="post" onsubmit="return submitForm(this)"><button type="submit"
               class="btn btn-dark" id="delete-button">刪除</button></form>

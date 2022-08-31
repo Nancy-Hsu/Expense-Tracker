@@ -14,9 +14,21 @@ const port = 3000
 app.engine('hbs', exphbs.engine({
   defaultLayout: 'main',
   extname: '.hbs',
+  helpers,
   helpers: {
     dateTransfer: function (date) {
       return date.toISOString().slice(0, 10)
+    },
+    makeOptions: function (categories, record) {
+      const options = categories.map(category => {
+        const selectedOption = record.categoryId.name
+        const option = category.name
+        if (selectedOption === option) {
+          return `<option value='${category._id}' selected > ${category.name}</option >`
+        }
+         return `<option value='${category._id}'> ${category.name}</option >`
+      }).join('')
+      return options
     }
   }
 }))

@@ -12,7 +12,9 @@
 
 
 #new-form label::after,
-.require-mark::before {
+.require-mark::before,
+#edit-form label::after
+ {
   content: " * ";
   color: red;
 }
