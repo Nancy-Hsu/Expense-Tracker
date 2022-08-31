@@ -15,7 +15,9 @@
 
         <li
           class="list-group-item list-group-item-action list-group-item-secondary d-flex align-items-center justify-content-around">
-          <i class="category_icon {{ this.categoryId.icon }}"></i>
+          <div class="icon_div">
+            <i class="category_icon {{ this.categoryId.icon }}"></i>
+          </div>
           <div class="w-25 d-flex flex-column ">
             <h3>
               {{this.name}}
@@ -39,7 +41,10 @@
 
 <div class="row">
   <div class="col-md-6 m-auto bg-light">
-    <button class="btn btn-success w-100 m-2">新增項目</button>
+    <a href="./record/new">
+    <button class="btn btn-success w-100 mb-2">新增項目</button>
+    </a>
+    
   </div>
 </div>
 
@@ -52,6 +57,10 @@
   .expense-list {
     height: 200px;
     overflow-y: scroll;
+  }
+
+  .icon_div {
+    width: 10%;
   }
 
   .category_icon {

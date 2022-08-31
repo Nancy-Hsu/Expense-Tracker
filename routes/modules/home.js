@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const Record = require('../../models/record')
-const category = require('../../models/category')
+const Category = require('../../models/category')
 
 
 router.get('/', (req, res) => {
 
-  category.find()
+  Category.find()
     .lean()
     .then(categories => {
       Record.find()

@@ -11,6 +11,8 @@ const router = require('./routes')
 const app = express()
 const port = 3000
 
+
+
 app.engine('hbs', exphbs.engine({
   defaultLayout: 'main', extname: '.hbs', helpers: {
     dateTransfer: function (date) {
@@ -20,15 +22,17 @@ app.engine('hbs', exphbs.engine({
 }))
 app.set('view engine', 'hbs')
 
+app.use(express.urlencoded({ extended:true }))
 app.use(express.static('public'))
 
 
 
 
+
+
+
+
 app.use(router)
-
-
-
 
 app.listen(port, () => {
   console.log(`express is listening on localhost:${port}`)
