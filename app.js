@@ -1,5 +1,6 @@
 const express = require('express')
 const session = require('express-session')
+const usePassport = require('./config/passport')
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
@@ -40,6 +41,8 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
+usePassport(app)
+
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
