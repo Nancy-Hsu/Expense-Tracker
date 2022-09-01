@@ -1,33 +1,40 @@
-<div class="row mt-5 ">
+<div class="row my-3 ">
   <div class="col-md-4 m-auto bg-light bg-opacity-25 shadow-lg rounded">
     <h3 class="text-center mt-2 text-light">Sign up</h3>
       <hr>
-      <form action="/user/register" method="POST" id="register-form">
-
-        <div id="user-input" class="m-auto my-3 p-2 d-flex w-75 shadow-lg">
-          <i class="fa-solid fa-user mx-2 pt-1"></i>
-          <input type="text" id="name" name="name" class="form-control" placeholder="Name" value="{{ name }}"  required>
-        </div>
+     
+      <div class="col-md-10 m-auto">
+        {{> message}}
+        <form action="/user/register" method="POST" id="register-form">
         
-        <div id="user-input" class="m-auto my-3 p-2 d-flex w-75 shadow-lg">
-          <i class="fas fa-envelope mx-2 pt-1"></i>
-          <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{ email }}" required>
-        </div>
-        <div id="user-input" class="m-auto my-3 p-2 d-flex w-75 shadow-lg">
-          <i class="fas fa-lock mx-2 pt-1"></i>
-          <input type="password" id="password" name="password" class="form-control" placeholder="Password" value="{{ password }}" required>
-        </div>
-
-        <div id="user-input" class="m-auto my-3 p-2 d-flex w-75 shadow-lg">
-          <i class="fas fa-unlock-alt mx-2 pt-1"></i>
-          <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="ConfirmPassword" value="{{ confirmPassword }}" required>
-        </div>
-
-        <div class="m-auto my-3 p-2 d-flex w-75">
-          <button class="btn w-100 shadow-lg" onclick="formCheck()">Register</button>
-        </div>
-      </form>
-      <p class="text-center ">已經有帳號了？<a href="/user/login" class="loginMsg">立即登入</a></p>
+          <div id="user-input" class="m-auto my-3 p-2 d-flex  shadow-lg">
+            <i class="fa-solid fa-user mx-2 pt-1"></i>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Name" value="{{ registerData.name }}" required>
+          </div>
+        
+          <div id="user-input" class="m-auto my-3 p-2 d-flex shadow-lg">
+            <i class="fas fa-envelope mx-2 pt-1"></i>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{ registerData.email }}" required>
+          </div>
+          <div id="user-input" class="m-auto my-3 p-2 d-flex shadow-lg">
+            <i class="fas fa-lock mx-2 pt-1"></i>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+              value="{{ registerData.password }}" required>
+          </div>
+        
+          <div id="user-input" class="m-auto my-3 p-2 d-flex shadow-lg">
+            <i class="fas fa-unlock-alt mx-2 pt-1"></i>
+            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control"
+              placeholder="ConfirmPassword" value="{{ registerData.confirmPassword }}" required>
+          </div>
+        
+          <div class="m-auto my-3 p-2 d-flex">
+            <button class="btn w-100 shadow-lg" onclick="formCheck()">Register</button>
+          </div>
+        </form>
+        <p class="text-center ">已經有帳號了？<a href="/user/login" class="loginMsg">立即登入</a></p>
+      </div>
+      
   </div>
 </div>
 

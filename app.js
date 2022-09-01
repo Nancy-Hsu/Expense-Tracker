@@ -8,6 +8,7 @@ require('./config/mongoose')
 const exphbs = require('express-handlebars')
 const helpers = require('handlebars-helpers')()
 const methodOverride = require('method-override')
+const flash = require('connect-flash')
 
 const router = require('./routes')
 const app = express()
@@ -36,17 +37,24 @@ app.engine('hbs', exphbs.engine({
 }))
 app.set('view engine', 'hbs')
 
+
 app.use(session({
   secret: 'kjgguyfvjknblkdgp9h',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: {
+    expires: 6000000
+  }
 }))
 
 usePassport(app)
+app.use(flash())
 app.use((req, res, next) => {
-  console.log(req.user)
   res.locals.isAuthenticated = req.isAuthenticated ()
   res.locals.user = req.user
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
+  res.locals.error_msg = req.flash('error_msg')
   next()
 })
 
