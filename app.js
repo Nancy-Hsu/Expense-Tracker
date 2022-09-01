@@ -1,4 +1,5 @@
 const express = require('express')
+const session = require('express-session')
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
@@ -33,6 +34,12 @@ app.engine('hbs', exphbs.engine({
   }
 }))
 app.set('view engine', 'hbs')
+
+app.use(session({
+  secret: 'kjgguyfvjknblkdgp9h',
+  resave: false,
+  saveUninitialized: true
+}))
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
