@@ -14,28 +14,32 @@ router.get('/new', (req, res) => {
 
 router.post('/', (req, res) => {
   const newRecord = req.body
+  newRecord.userId = req.user._id
   Record.create(newRecord)
   res.redirect('/')
 })
 
 router.delete('/:id', (req, res) => {
   const _id = req.params.id
-  Record.deleteOne({ _id })
+  const userId = req.user._id 
+  Record.findOneAndDelete({ userId, _id })
     .then(() => res.redirect('/'))
 })
 
 router.get('/:id/edit', (req, res) => {
   const _id = req.params.id
+  const userId = req.user._id 
+
   Category.find()
     .lean()
     .sort('_id')
     .then(categories => {
-      Record.findOne({ _id })
+      Record.findOne({ userId, _id })
         .populate('categoryId')
         .lean()
         .then(record => {
-          const categoryName = record.categoryId.name.toString()
-          res.render('edit', { record, categories, categoryName })
+        
+          res.render('edit', { record, categories })
         })
     })
 })
@@ -43,11 +47,12 @@ router.get('/:id/edit', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const _id = req.params.id
+  const userId = req.user._id 
   const editedRecord = req.body
   Category.find()
     .lean()
     .then(() => {
-      Record.findOneAndUpdate({ _id }, editedRecord)
+      Record.findOneAndUpdate({ userId, _id }, editedRecord)
         .populate('categoryId')
         .lean()
         .sort('_id')
