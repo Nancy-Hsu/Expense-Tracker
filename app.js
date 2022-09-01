@@ -39,7 +39,7 @@ app.set('view engine', 'hbs')
 
 
 app.use(session({
-  secret: 'kjgguyfvjknblkdgp9h',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
