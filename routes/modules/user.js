@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('../../models/user')
 const passport = require('passport')
+const bcrypt = require('bcryptjs')
 
 
 
@@ -22,22 +23,28 @@ router.post('/register', (req, res) => {
     errors.push({ message: '請確認密碼與確認密碼需相符！' })
   }
   if (errors.length) {
-    return res.render('register', { registerData, errors})
+    return res.render('register', { registerData, errors })
   }
-  User.findOne({ email  })
-  .then(user => {
-    if (user) {
-      errors.push({ message: '使用者已存在！'})
-      return res.render('register', { registerData, errors })
+  User.findOne({ email })
+    .then(user => {
+      if (user) {
+        errors.push({ message: '使用者已存在！' })
+        return res.render('register', { registerData, errors })
       }
-      return User.create({
-        name, email, password
-      })
-      .then(() => {
-        req.flash('success_msg', '你已成功註冊，請再次登入。')
-        res.redirect('login')})
-        .catch(err => console.log(err))
-  }).catch(err => console.log(err))
+      return bcrypt
+        .genSalt(10)
+        .then(salt => bcrypt.hash(password, salt))
+        .then(hash => {
+          User.create({
+            name, email, password: hash
+          })
+            .then(() => {
+              req.flash('success_msg', '你已成功註冊，請再次登入。')
+              res.redirect('login')
+            })
+            .catch(err => console.log(err))
+        })
+    }).catch(err => console.log(err))
 })
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
