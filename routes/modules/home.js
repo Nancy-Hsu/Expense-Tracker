@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
       Record.find({ $and: [{ userId }, categoryId] })
         .populate('categoryId')
         .lean()
-        .sort('-id')
+        .sort('-_id')
         .then(records => {
           let totalAmount = 0
           records.map(record => {
