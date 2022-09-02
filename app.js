@@ -6,7 +6,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 require('./config/mongoose')
 const exphbs = require('express-handlebars')
-const { customHelpers } = require('./helpers')
+const { helpers } = require('./helpers')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
 
@@ -17,7 +17,7 @@ const port = 3000
 app.engine('hbs', exphbs.engine({
   defaultLayout: 'main',
   extname: '.hbs',
-  customHelpers
+  helpers
 }))
 app.set('view engine', 'hbs')
 

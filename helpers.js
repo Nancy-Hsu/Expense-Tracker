@@ -1,5 +1,5 @@
 module.exports = {
-  customHelpers: {
+  helpers: {
     dateTransfer: function (date) {
       return date.toISOString().slice(0, 10)
     },
