@@ -12,7 +12,7 @@ const flash = require('connect-flash')
 
 const router = require('./routes')
 const app = express()
-const port = 3000
+const PORT = process.env.PORT || 3000
 
 app.engine('hbs', exphbs.engine({
   defaultLayout: 'main',
@@ -50,6 +50,6 @@ app.use(methodOverride('_method'))
 
 app.use(router)
 
-app.listen(port, () => {
-  console.log(`express is listening on localhost:${port}`)
+app.listen(PORT, () => {
+  console.log(`App is running on http://localhost:${PORT}`)
 })
