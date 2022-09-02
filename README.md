@@ -1,11 +1,14 @@
 # Expense-Tracker
 來一起統計一下私房錢吧！
+<br />
+<br />
 ![image](https://user-images.githubusercontent.com/108853120/188142020-620c0962-4130-4bfe-8e38-ff3eb216d3f7.png)
 
 也可以用虛擬帳號來體驗一下唷！
 | 帳號 | 密碼 |
+| ------ | ----------- |
 | user1@example.com | 12345678 |
-<br />
+
 
 ## 功能
 - 註冊帳號或使用FB或Gmail登入
