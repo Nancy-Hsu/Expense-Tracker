@@ -1,73 +1,54 @@
 <div class="row my-3 ">
-  <div class="col-md-4 m-auto bg-light bg-opacity-25 shadow-lg rounded">
-    <h3 class="text-center mt-2 text-light">Sign up</h3>
+  <div class="col-md-4 m-auto bg-light bg-opacity-25 shadow rounded py-2" >
+    <h3 class="text-center  text-light">Sign up</h3>
       <hr>
      
       <div class="col-md-10 m-auto">
         {{> message}}
         <form action="/user/register" method="POST" id="register-form">
         
-          <div id="user-input" class="m-auto my-3 p-2 d-flex  shadow-lg">
+          <div id="user-input" class="m-auto my-3 p-2 d-flex  shadow">
             <i class="fa-solid fa-user mx-2 pt-1"></i>
             <input type="text" id="name" name="name" class="form-control" placeholder="Name" value="{{ registerData.name }}" required>
           </div>
         
-          <div id="user-input" class="m-auto my-3 p-2 d-flex shadow-lg">
+          <div id="user-input" class="m-auto my-3 p-2 d-flex shadow">
             <i class="fas fa-envelope mx-2 pt-1"></i>
             <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{ registerData.email }}" required>
           </div>
-          <div id="user-input" class="m-auto my-3 p-2 d-flex shadow-lg">
+          <div id="user-input" class="m-auto my-3 p-2 d-flex shadow">
             <i class="fas fa-lock mx-2 pt-1"></i>
             <input type="password" id="password" name="password" class="form-control" placeholder="Password"
               value="{{ registerData.password }}" required>
           </div>
         
-          <div id="user-input" class="m-auto my-3 p-2 d-flex shadow-lg">
+          <div id="user-input" class="m-auto my-3 p-2 d-flex shadow">
             <i class="fas fa-unlock-alt mx-2 pt-1"></i>
             <input type="password" id="confirmPassword" name="confirmPassword" class="form-control"
               placeholder="ConfirmPassword" value="{{ registerData.confirmPassword }}" required>
           </div>
         
           <div class="m-auto my-3 p-2 d-flex">
-            <button class="btn w-100 shadow-lg" onclick="formCheck()">Register</button>
+            <button class="btn w-100 shadow" onclick="formCheck()">Register</button>
           </div>
         </form>
         <p class="text-center ">已經有帳號了？<a href="/user/login" class="loginMsg">立即登入</a></p>
       </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <a href="/auth/facebook" class="btn btn-primary w-100 shadow"><span><i class="fa fa-facebook "></i></span>
+            Facebook 登入</a>
+        </div>
+        <div class="col-sm-6">
+          <a href="/auth/google" class="btn btn-danger w-100 shadow"><span><i class="fa fa-google"></i></span>
+            Google 登入</a>
+        </div>
       
   </div>
 </div>
 
 <style>
-  #user-input {
-    background-color: rgb(222, 218, 218);
-    border: 1px solid #DDD;
-    border-radius: 10px;
-  }
-
-  #user-input input {
-    border: none;
-    background-color: rgb(222, 218, 218);
-
-  }
-
-  #user-input i {
-    color: indianred;
-    font-size: 1.5rem;
-  }
-
-  #register-form button {
-    color: blanchedalmond;
-    background:linear-gradient(to bottom, #768d4c, #4e632b)
-  }
-
-  .loginMsg{
-    color: indianred;
-  }
-  .loginMsg:hover{
-    color:blanchedalmond;
-  }
-
+ 
 </style>
 
 <script>

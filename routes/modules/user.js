@@ -26,6 +26,7 @@ router.post('/register', (req, res) => {
     return res.render('register', { registerData, errors })
   }
   User.findOne({ email })
+    .lean()
     .then(user => {
       if (user) {
         errors.push({ message: '使用者已存在！' })

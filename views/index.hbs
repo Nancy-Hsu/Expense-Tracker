@@ -1,35 +1,57 @@
+<div class="row my-3">
+  <div class="col-md-6 m-auto p-0 d-flex align-items-center">
+    <form action="/" method="get" class="col-sm-6 bg-light rounded d-flex" id="search-by-category">
+      <label for="category" class="col-sm-3 col-form-label text-center"><span><i
+            class="fas fa-list"></i></span>類別</label>
+      <div class="col-sm-9">
+        <select class="form-select" aria-label="Default select example" name="categoryId" id="category"
+          onchange="this.form.submit()">
+          {{!-- <option>請選擇</option> --}}
+          <option value="">全部</option>
+          {{{makeOptions categories selectedOption}}}
+        </select>
+      </div>
+    </form>
+    <div class="col-sm-6 ps-3">
+      {{> message}}
+    </div>
+  </div>
+</div>
+</div>
+
+
 
 <div class="row mt-3">
-  <div class="col-md-6 m-auto bg-light ">
+  <div class="col-md-6 m-auto bg-light  rounded">
     <p class="fs-4 p-3 m-0 text-secondary">總花費：<strong class="fs-1 text-dark">{{totalAmount}}</strong></p>
   </div>
 </div>
 
 <div class="row mt-3">
-  <div class="col-md-6 m-auto bg-light">
-    <nav id="navbar-example2" class=" my-2 navbar bg-warning px-3 mb-3">
-      <a class="navbar-brand" href="#">消費明細</a>
+  <div class="col-md-6 m-auto bg-light bg-opacity-75 rounded">
+    <nav id="navbar-example2" class=" my-2 navbar px-3 mb-3 rounded ">
+      <p class="navbar-brand m-auto">消 費 明 細</p>
     </nav>
-    <div class="expense-list mb-2">
+    <div class="expense-list mb-3 rounded border">
       <ul class="list-group list-group-flush">
         {{#each records}}
 
         <li
-          class="list-group-item list-group-item-action list-group-item-secondary d-flex align-items-center justify-content-around">
+          class="list-group-item list-group-item-action list-group-item-light d-flex align-items-center justify-content-around">
           <div class="icon_div">
             <i class="category_icon {{ this.categoryId.icon }}"></i>
           </div>
           <div class="w-25 d-flex flex-column ">
-            <h3>
+            <h4>
               {{this.name}}
-            </h3>
+            </h4>
             <small class="date text-muted">{{dateTransfer this.date }}</small>
           </div>
-          <p>{{ this.amount }}</p>
-          <a href="./record/{{this._id}}/edit"><button class="btn btn-dark mx-2">修改</button></a>
+          <h5>{{ this.amount }}</h5>
+          <a href="./record/{{this._id}}/edit"><button class="btn mx-2 edit-button">修改</button></a>
 
-          <form action="./record/{{this._id}}?_method=DELETE" method="post" onsubmit="return submitForm(this)"><button type="submit"
-              class="btn btn-dark" id="delete-button">刪除</button></form>
+          <form action="./record/{{this._id}}?_method=DELETE" method="post" onsubmit="return submitForm(this)"><button
+              type="submit" class="btn delete-button">刪除</button></form>
         </li>
         </li>
         {{/each}}
@@ -38,10 +60,10 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-6 m-auto bg-light">
+<div class="row my-2">
+  <div class="col-md-6 m-auto bg-light bg-opacity-75 rounded">
     <a href="./record/new">
-      <button class="btn btn-success w-100 mb-2" onclick="return isDelete()">新增項目</button>
+      <button class="btn w-100 my-2" onclick="return isDelete()" id="add-new-button">新增項目</button>
     </a>
 
   </div>
@@ -53,19 +75,7 @@
 </div>
 
 <style>
-  .expense-list {
-    height: 200px;
-    overflow-y: scroll;
-  }
 
-  .icon_div {
-    width: 10%;
-  }
-
-  .category_icon {
-    font-size: 3rem;
-    color: rgb(119, 140, 99);
-  }
 </style>
 
 

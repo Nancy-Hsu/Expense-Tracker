@@ -5,7 +5,7 @@
 }
 
 body {
-  
+
   background-image: url(' https://images.unsplash.com/photo-1527542146552-9e862c46e596?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGJsdXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60 ');
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -28,8 +28,123 @@ body {
 }
 
 
-
-
-input[type=number]::-webkit-inner-spin-button input[type=number]::-webkit-outer-spin-button {
-  opacity: 1;
+#user-input {
+  background-color: rgb(222, 218, 218);
+  border: 1px solid #DDD;
+  border-radius: 10px;
 }
+
+#user-input input {
+  border: none;
+  background-color: rgb(222, 218, 218);
+
+}
+
+#user-input i,
+#edit-form i{
+  color: indianred;
+  font-size: 1.3rem;
+}
+
+#search-by-category i{
+  color: indianred;
+}
+
+#register-form button,
+#new-form button {
+  color: #ffebcd;
+  background: darkolivegreen;
+  
+}
+
+.loginMsg {
+  color: indianred;
+}
+
+.loginMsg:hover {
+  color: blanchedalmond;
+}
+
+span {
+  margin-right: 0.5rem;
+}
+
+#new-form i {
+  font-size: 1.2rem;
+  color: #4e632b;
+}
+
+#login-input {
+  background-color: white;
+  border: 1px solid #DDD;
+  border-radius: 10px;
+}
+
+#login-input input,
+#search-by-category select {
+  border: none;
+}
+
+#login-input i {
+
+  font-size: 1.5rem;
+}
+
+#login-input i {
+  color: darkolivegreen;
+  font-size: 1.5rem;
+}
+
+#login-form button,
+#edit-form button {
+  color: blanchedalmond;
+  background: linear-gradient(to bottom, #cf7777, #cd5c5c);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.registerMsg {
+  color: indianred;
+}
+
+.registerMsg:hover {
+  color: blanchedalmond;
+}
+    .expense-list {
+      height: 200px;
+      overflow-y: scroll;
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+    }
+  
+    .icon_div {
+      width: 10%;
+    }
+  
+    .category_icon {
+      font-size: 2.5rem;
+      color: plum;
+    }
+  
+    #navbar-example2 {
+      background-color: bisque;
+  
+    }
+  
+    #navbar-example2 p {
+      color: rgb(85, 107, 47);
+    }
+  
+    #add-new-button {
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+      background-color: rgb(85, 107, 47);
+      color: blanchedalmond;
+    }
+  
+    .delete-button {
+      background: indianred;
+      color: blanchedalmond;
+    }
+  
+    .edit-button {
+      background: rgb(131, 170, 131);
+      color: white;
+    }

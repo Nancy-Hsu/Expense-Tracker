@@ -27,7 +27,7 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
         <span><i class="fad fa-bullhorn fa"></i></span>
-        {{#if isAuthenticated}} {{user.name}}'s {{/if}} 私房錢
+        {{#if isAuthenticated}}{{ user.name}}'s {{/if}} 私房錢
       </a>
       {{#if isAuthenticated}}
       <a href="/user/logout"><button class="btn btn-outline-light me-2" type="button">登出</button></a>

@@ -1,5 +1,5 @@
 <div class="row mt-3">
-  <div class="col-md-4 m-auto bg-white bg-opacity-50 ">
+  <div class="col-md-4 m-auto bg-white bg-opacity-50 rounded">
     <div class="my-3 row">
       <small class="require-mark col-sm-3">為必填欄位</small>
       <h3 class="col-sm-9 text-center">
@@ -9,35 +9,35 @@
 
     <form action="/record/{{ record._id }}?_method=PUT" method="post" id="edit-form" class="mt-3">
       <div class="mb-3 row">
-        <label for="name" class="col-sm-2 col-form-label">名稱</label>
-        <div class="col-sm-10">
+        <label for="name" class="col-sm-3 col-form-label text-center"><span><i class="fas fa-highlighter"></i></span>名稱</label>
+        <div class="col-sm-9">
           <input type="text" class="form-control" name="name" id="name" value="{{ record.name }}" required>
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="date" class="col-sm-2 col-form-label">日期</label>
-        <div class="col-sm-10">
-          <input type="date" class="form-control" name="date" id="date" value="{{ dateTransfer record.date}}" onfocus="(this.type='date')" required>
+        <label for="date" class="col-sm-3 col-form-label text-center"><span><i class="fas fa-table"></i></span>日期</label>
+        <div class="col-sm-9">
+          <input type="date" class="form-control" name="date" id="date" value="{{ dateTransfer record.date}}"  required>
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="category" class="col-sm-2 col-form-label">類別</label>
-        <div class="col-sm-10">
+        <label for="category" class="col-sm-3 col-form-label text-center"><span><i class="fas fa-list"></i></span>類別</label>
+        <div class="col-sm-9">
           <select class="form-select" aria-label="Default select example" name="categoryId" id="category" required>
             {{!-- <option>請選擇</option> --}}
-            {{{makeOptions categories record}}}
+            {{{makeOptions categories selectedOption}}}
           </select>
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="amount" class="col-sm-2 col-form-label">金額</label>
-        <div class="col-sm-10">
+        <label for="amount" class="col-sm-3 col-form-label text-center"><span><i class="fas fa-sack-dollar"></i></span>金額</label>
+        <div class="col-sm-9">
           <input type="number" class="form-control" name="amount" id="amount" min="0" value="{{ record.amount }}" required>
         </div>
       </div>
       <div class="mb-3 row justify-content-end">
-        <div class="col-sm-10">
-          <button type="submit" class=" btn btn-dark w-100" id="submitButton">送出</button>
+        <div class="col-sm-9">
+          <button type="submit" class=" btn w-100" id="submitButton">送出</button>
         </div>
 
       </div>
@@ -56,4 +56,3 @@
   })
 </script> 
 
-{{!-- {{#ifEquals record.categoryId.name categories.name }}selected{{/ifEquals}}  --}}
