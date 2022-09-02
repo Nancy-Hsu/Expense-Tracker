@@ -43,14 +43,14 @@ router.post('/register', (req, res) => {
               req.flash('success_msg', '你已成功註冊，請再次登入。')
               res.redirect('login')
             })
-            .catch(err => console.log(err))
+            .catch(err => res.render('error', { err }))
         })
-    }).catch(err => console.log(err))
+    }).catch(err => res.render('error', { err }))
 })
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
   failureRedirect: '/user/login',
   failureFlash: true
+  successRedirect: '/',
 }))
 
 router.get('/logout', (req, res) => {

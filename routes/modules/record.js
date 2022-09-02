@@ -9,7 +9,7 @@ router.get('/new', (req, res) => {
     .sort('_id')
     .then(categories => {
       res.render('new', { categories })
-    })
+    }).catch(err => res.render('error', { err }))
 })
 
 router.post('/', (req, res) => {
@@ -20,24 +20,25 @@ router.post('/', (req, res) => {
       req.flash('success_msg', '已新增！')
       res.redirect('/')
     })
-  
+    .catch(err => res.render('error', { err }))
+
 })
 
 router.delete('/:id', (req, res) => {
   const _id = req.params.id
-  const userId = req.user._id 
+  const userId = req.user._id
   Record.findOneAndDelete({ userId, _id })
     .then(() => {
       req.flash('success_msg', '已刪除！')
       res.redirect('/')
-    }
-    )
+    })
+    .catch(err => res.render('error', { err }))
 })
 
 router.get('/:id/edit', (req, res) => {
   const _id = req.params.id
-  const userId = req.user._id 
-  
+  const userId = req.user._id
+
   Category.find()
     .lean()
     .sort('_id')
@@ -46,16 +47,16 @@ router.get('/:id/edit', (req, res) => {
         .populate('categoryId')
         .lean()
         .then(record => {
-          const selectedOption = record.categoryId.name 
+          const selectedOption = record.categoryId.name
           res.render('edit', { record, categories, selectedOption })
-        })
-    })
+        }).catch(err => res.render('error', { err }))
+    }).catch(err => res.render('error', { err }))
 })
 
 
 router.put('/:id', (req, res) => {
   const _id = req.params.id
-  const userId = req.user._id 
+  const userId = req.user._id
   const editedRecord = req.body
   Category.find()
     .lean()
@@ -66,8 +67,9 @@ router.put('/:id', (req, res) => {
         .sort('_id')
         .then(() => {
           req.flash('success_msg', '已更改！')
-          res.redirect('/')})
-    }).catch(err => console.log(err))
+          res.redirect('/')
+        }).catch(err => res.render('error', { err }))
+    }).catch(err => res.render('error', { err }))
 })
 
 module.exports = router
