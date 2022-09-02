@@ -6,7 +6,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 require('./config/mongoose')
 const exphbs = require('express-handlebars')
-const helpers = require('handlebars-helpers')()
+const { customHelpers } = require('./helpers')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
 
@@ -17,22 +17,7 @@ const port = 3000
 app.engine('hbs', exphbs.engine({
   defaultLayout: 'main',
   extname: '.hbs',
-  helpers,
-  helpers: {
-    dateTransfer: function (date) {
-      return date.toISOString().slice(0, 10)
-    },
-    makeOptions: function (categories, selectedOption) {
-      const options = categories.map(category => {
-        
-        if (selectedOption === category.name || selectedOption === category._id.toString()) {
-          return `<option value='${category._id}' selected > ${category.name}</option >`
-        }
-         return `<option value='${category._id}'> ${category.name}</option >`
-      }).join('')
-      return options
-    }
-  }
+  customHelpers
 }))
 app.set('view engine', 'hbs')
 
