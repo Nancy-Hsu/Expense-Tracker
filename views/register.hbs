@@ -1,55 +1,49 @@
-<div class="row my-3 ">
-  <div class="col-md-4 m-auto bg-light bg-opacity-25 shadow rounded py-2" >
+<div class="row m-4 ">
+  <div class="col-md-5 m-auto bg-light bg-opacity-25 shadow rounded py-2">
     <h3 class="text-center  text-light">Sign up</h3>
-      <hr>
-     
-      <div class="col-md-10 m-auto">
-        {{> message}}
-        <form action="/user/register" method="POST" id="register-form">
-        
-          <div id="user-input" class="m-auto my-3 p-2 d-flex  shadow">
-            <i class="fa-solid fa-user mx-2 pt-1"></i>
-            <input type="text" id="name" name="name" class="form-control" placeholder="Name" value="{{ registerData.name }}" required>
-          </div>
-        
-          <div id="user-input" class="m-auto my-3 p-2 d-flex shadow">
-            <i class="fas fa-envelope mx-2 pt-1"></i>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="{{ registerData.email }}" required>
-          </div>
-          <div id="user-input" class="m-auto my-3 p-2 d-flex shadow">
-            <i class="fas fa-lock mx-2 pt-1"></i>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Password"
-              value="{{ registerData.password }}" required>
-          </div>
-        
-          <div id="user-input" class="m-auto my-3 p-2 d-flex shadow">
-            <i class="fas fa-unlock-alt mx-2 pt-1"></i>
-            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control"
-              placeholder="ConfirmPassword" value="{{ registerData.confirmPassword }}" required>
-          </div>
-        
-          <div class="m-auto my-3 p-2 d-flex">
-            <button class="btn w-100 shadow" onclick="formCheck()">Register</button>
-          </div>
-        </form>
-        <p class="text-center ">已經有帳號了？<a href="/user/login" class="loginMsg">立即登入</a></p>
-      </div>
+    <hr>
+    <div class="col-md-10 m-auto">
+      {{> message}}
+      <form action="/user/register" method="POST" id="register-form">
+        <div id="user-input" class="m-auto my-3 p-2 d-flex  shadow">
+          <i class="fa-solid fa-user mx-2 pt-1"></i>
+          <input type="text" id="name" name="name" class="form-control" placeholder="Name"
+            value="{{ registerData.name }}" required>
+        </div>
+        <div id="user-input" class="m-auto my-3 p-2 d-flex shadow">
+          <i class="fas fa-envelope mx-2 pt-1"></i>
+          <input type="email" id="email" name="email" class="form-control" placeholder="Email"
+            value="{{ registerData.email }}" required>
+        </div>
+        <div id="user-input" class="m-auto my-3 p-2 d-flex shadow">
+          <i class="fas fa-lock mx-2 pt-1"></i>
+          <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+            value="{{ registerData.password }}" required>
+        </div>
+        <div id="user-input" class="m-auto my-3 p-2 d-flex shadow">
+          <i class="fas fa-unlock-alt mx-2 pt-1"></i>
+          <input type="password" id="confirmPassword" name="confirmPassword" class="form-control"
+            placeholder="ConfirmPassword" value="{{ registerData.confirmPassword }}" required>
+        </div>
+
+        <div class="m-auto my-3 d-flex">
+          <button class="btn w-100 shadow" onclick="formCheck()">Register</button>
+        </div>
+      </form>
+      <p class="text-center ">已經有帳號了？<a href="/user/login" class="loginMsg">立即登入</a></p>
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-lg-6 mb-2 p-1">
           <a href="/auth/facebook" class="btn btn-primary w-100 shadow"><span><i class="fa fa-facebook "></i></span>
             Facebook 登入</a>
         </div>
-        <div class="col-sm-6">
+        <div class="col-lg-6 p-1">
           <a href="/auth/google" class="btn btn-danger w-100 shadow"><span><i class="fa fa-google"></i></span>
             Google 登入</a>
         </div>
-      
+      </div>
+    </div>
   </div>
 </div>
-
-<style>
- 
-</style>
 
 <script>
   const formCheck = () => {
