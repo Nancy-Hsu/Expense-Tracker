@@ -5,7 +5,6 @@
 }
 
 body {
-
   background-image: url(' https://images.unsplash.com/photo-1527542146552-9e862c46e596?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGJsdXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60 ');
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -86,7 +85,6 @@ span {
 }
 
 #login-input i {
-
   font-size: 1.5rem;
 }
 
@@ -111,7 +109,7 @@ span {
 }
 
 .expense-list {
-  height: calc(100vh-400px);
+  height: calc(100vh - 400px);
   min-height: 210px;
   overflow-y: scroll;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
@@ -123,15 +121,16 @@ span {
 
 .category_icon {
   font-size: 2.5rem;
-  color: plum;
+  color: gray;
 }
 
 #navbar-example2 {
-  background-color: bisque;
-
+  background-color: floralwhite;
 }
 
 #navbar-example2 p {
+  font-size: 1.5rem;
+  font-weight: 900;
   color: rgb(85, 107, 47);
 }
 

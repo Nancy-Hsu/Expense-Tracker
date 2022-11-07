@@ -4,12 +4,7 @@
   {{ error_msg }}
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
-
 {{/if}}
-
-
-
-
 
 {{#if success_msg}}
 <div class="alert alert-success alert-dismissible fade show m-0 p-2" role="alert">
@@ -18,13 +13,13 @@
   <button type="button" class="btn-close p-3 " data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 {{/if}}
+
 {{#if warning_msg}}
 <div class="alert alert-warning alert-dismissible fade show " role="alert">
   <span><i class="fas fa-exclamation-circle me-2"></i></span>
    {{ warning_msg }}
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
-  
 {{/if}}
 
 {{#if errors}}

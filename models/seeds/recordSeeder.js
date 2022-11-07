@@ -29,13 +29,14 @@ db.once('open', () => {
       return Category.find()
         .lean()
         .then(categories => {
-          return Promise.all(Array.from({ length: categories.length }, (_, i) => {
+          const length = categories.length * 10 
+          return Promise.all(Array.from({ length }, (_, i) => {
             return Record.create({
-              name: categories[i].name,
+              name: categories[i % 5].name,
               date: Date.now(),
-              amount: (i + 1) * 100,
+              amount: (i + 1) * 5,
               userId,
-              categoryId: categories[i]._id
+              categoryId: categories[i % 5]._id
             })
           })
           )
