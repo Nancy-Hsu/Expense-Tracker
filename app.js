@@ -1,10 +1,13 @@
 const express = require('express')
 const session = require('express-session')
+const Store = require('express-session').Store;
+const MongooseStore = require('mongoose-express-session')(Store);
 const usePassport = require('./config/passport')
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
-require('./config/mongoose')
+// require('./config/mongoose')
+const { mongoose } = require('./config/mongoose')
 const exphbs = require('express-handlebars')
 const { helpers } = require('./helpers')
 const methodOverride = require('method-override')
@@ -21,11 +24,16 @@ app.engine('hbs', exphbs.engine({
 }))
 app.set('view engine', 'hbs')
 
-
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+  },
+  store: new MongooseStore({
+     connection: mongoose
+  })
 }))
 
 usePassport(app)
@@ -38,8 +46,6 @@ app.use((req, res, next) => {
   res.locals.error_msg = req.flash('error_msg')
   next()
 })
-
-
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))

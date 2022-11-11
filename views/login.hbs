@@ -1,38 +1,41 @@
 <div class="row m-4">
   <div class="col-md-5 m-auto py-3 bg-light bg-opacity-25 shadow rounded">
-    <h1 class="text-center  text-light">Sign in</h2>
-      <hr>
+    <h2 class="text-center  text-light">Sign in</h2>
+    <hr>
 
-      <div class="col-md-10 m-auto">
-        {{> message}}
-        <form action="/user/login" method="POST" id="login-form">
+    <div class="col-md-10 m-auto">
+      {{> message}}
+      <form action="/user/login" method="POST" id="login-form">
 
-          <div id="login-input" class="m-auto my-3 p-2 d-flex shadow">
-            <i class="fa-solid fa-user mx-2 pt-1"></i>
-            <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
-          </div>
-          <div id="login-input" class="m-auto my-3 p-2 d-flex shadow">
-            <i class="fas fa-unlock-alt mx-2 pt-1"></i>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-          </div>
+        <div id="login-input" class="m-auto my-3 p-2 d-flex shadow">
+          <i class="fa-solid fa-user mx-2 pt-1"></i>
+          <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+        </div>
+        <div id="login-input" class="m-auto my-3 p-2 d-flex shadow">
+          <i class="fas fa-unlock-alt mx-2 pt-1"></i>
+          <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+        </div>
 
-          <div class="m-auto my-3 d-flex ">
-            <button class="btn w-100 shadow" onclick="formCheck()">Login</button>
-          </div>
-        </form>
-        <p class="text-center ">還沒有帳號？<a href="/user/register" class="registerMsg">立即加入</a></p>
+        <div class="m-auto my-3 d-flex ">
+          <button class="btn w-100 shadow" onclick="formCheck()">Login</button>
+        </div>
+      </form>
+      <div class="d-flex justify-content-between">
+        <p class="text-start ">還沒有帳號？<a href="/user/register" class="text-light">立即加入</a></p>
 
-        <div class="row">
-          <div class="col-lg-6 mb-2">
-            <a href="/auth/facebook" class="btn btn-primary w-100 shadow"><span><i class="fa fa-facebook "></i></span>
-              Facebook 登入</a>
-          </div>
-          <div class="col-lg-6">
-            <a href="/auth/google" class="btn btn-danger w-100 shadow"><span><i class="fa fa-google"></i></span>
-              Google 登入</a>
-          </div>
+        <p class="text-end"><a href="/user/resetPassword" class="text-light">忘記密碼？</a></p>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 mb-2">
+          <a href="/auth/facebook" class="btn btn-primary w-100 shadow"><span><i class="fa fa-facebook "></i></span>
+            Facebook 登入</a>
+        </div>
+        <div class="col-lg-6">
+          <a href="/auth/google" class="btn btn-danger w-100 shadow"><span><i class="fa fa-google"></i></span>
+            Google 登入</a>
         </div>
       </div>
+    </div>
   </div>
 </div>
 
