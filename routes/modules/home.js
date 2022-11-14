@@ -40,7 +40,6 @@ router.get('/', (req, res) => {
     }])
   ])
     .then(([dateResult, categories]) => {
-      console.log(dateResult)
       data = dateResult[0]
       data.categories = categories
 
@@ -56,7 +55,6 @@ router.get('/', (req, res) => {
       ])])
     })
     .then(([result, sumCategory]) => {
-      console.log(sumCategory)
       sumByCategory = sumCategory
       return Record.populate(result, { path: "categoryId", options: { lean: true } })
     })

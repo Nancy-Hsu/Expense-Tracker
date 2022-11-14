@@ -3,7 +3,7 @@
     <div class="d-flex">
       <form action="/" method="get" class="col-sm-12 rounded d-flex" id="search-by-category">
 
-        <div class="col-sm-3 me-1">
+        <div class="col-md-3 me-1">
           <select class="form-select" aria-label="Default select example" name="year" id="year">
             <option value="">選擇年份
             </option>
@@ -14,7 +14,7 @@
           </select>
         </div>
 
-        <div class="col-sm-3 me-1">
+        <div class="col-md-3 me-1">
           <select class="form-select" aria-label="Default select example" name="month" id="month">
             <option value="">選擇月份
             </option>
@@ -25,7 +25,7 @@
           </select>
         </div>
 
-        <div class="col-sm-3 me-1">
+        <div class="col-md-3 me-1">
           <select class="form-select" aria-label="Default select example" name="categoryId" id="category">
             <option value="">全部類別</option>
             {{#each data.categories}}
@@ -42,16 +42,16 @@
 
 
     </div>
-    <div class="row p-2 mt-1">
-      <div class="col-md-6 d-flex flex-column bg-light bg-opacity-75 rounded">
+    <div class="row p-2">
+      <div class="col-lg-6 d-flex flex-column justify-content-around bg-light bg-opacity-75 rounded my-1">
         <div class="text-center">
           <p class="fs-4 p-2 m-0 text-secondary">總花費：<strong class="fs-1 text-dark">{{totalAmount}}</strong></p>
-          <nav id="navbar-example2" class="mt-1 navbar rounded ">
+          <nav id="navbar-example2" class="m-1 navbar rounded ">
             <p class="navbar-brand m-auto ">消 費 明 細 <i class="fas fa-arrow-down"></i></p>
           </nav>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-lg-6 my-1">
         <div class="bg-light rounded">
           <canvas id="myChart"></canvas>
         </div>
