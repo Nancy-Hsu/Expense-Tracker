@@ -1,16 +1,40 @@
 <div class="row my-3 d-flex justify-content-center p-2">
   <div class="col-md-6">
     <div class="d-flex">
-      <form action="/" method="get" class="col-sm-6 bg-light rounded d-flex" id="search-by-category">
-        <label for="category" class="col-sm-4 col-form-label text-center"><span><i
-              class="fas fa-list ms-1"></i></span>類別</label>
-        <div class="col-sm-8">
-          <select class="form-select" aria-label="Default select example" name="categoryId" id="category"
-            onchange="this.form.submit()">
-            <option value="">全部</option>
-            {{{makeOptions categories selectedOption}}}
+      <form action="/" method="get" class="col-sm-12 rounded d-flex" id="search-by-category">
+
+        <div class="col-sm-3 me-1">
+          <select class="form-select" aria-label="Default select example" name="year" id="year">
+            <option value="">選擇年份
+            </option>
+            {{#each data.years}}
+            <option value='{{ this }}' {{#ifCond this ../optionsSelected.year}} selected {{/ifCond}}> {{ this }}
+            </option>
+            {{/each}}
           </select>
         </div>
+
+        <div class="col-sm-3 me-1">
+          <select class="form-select" aria-label="Default select example" name="month" id="month">
+            <option value="">選擇月份
+            </option>
+            {{#each data.months}}
+            <option value='{{ this }}' {{#ifCond this ../optionsSelected.month}} selected {{/ifCond}}> {{ this }}
+            </option> {{ this }}</option>
+            {{/each}}
+          </select>
+        </div>
+
+        <div class="col-sm-3 me-1">
+          <select class="form-select" aria-label="Default select example" name="categoryId" id="category">
+            <option value="">全部類別</option>
+            {{#each data.categories}}
+            <option value='{{ this._id }}' {{#ifCond this._id ../optionsSelected.categoryId }} selected {{/ifCond}}>
+              {{ this.name }}</option>
+            {{/each}}
+          </select>
+        </div>
+        <button class="filter-button btn" type="submit">GO</button>
       </form>
       <div class="col-sm-6 ps-3">
         {{> message}}
@@ -18,13 +42,28 @@
 
 
     </div>
-    <div class="mt-2 bg-light rounded">
-      <p class="fs-4 p-2 m-0 text-secondary">總花費：<strong class="fs-1 text-dark">{{totalAmount}}</strong></p>
+    <div>
+      <div class="col-md-6 d-flex flex-column bg-light bg-opacity-75 rounded mt-2 p-2">
+        <div class="text-center">
+          <p class="fs-4 p-2 m-0 text-secondary">總花費：<strong class="fs-1 text-dark">{{totalAmount}}</strong></p>
+          <nav id="navbar-example2" class=" my-1 navbar rounded ">
+            <p class="navbar-brand m-auto">消 費 明 細</p>
+          </nav>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div>
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
     </div>
+    {{!-- <div class="mt-2 bg-light rounded">
+      <p class="fs-4 p-2 m-0 text-secondary">總花費：<strong class="fs-1 text-dark">{{totalAmount}}</strong></p>
+    </div> --}}
     <div class="mt-2 px-2 py-1 bg-light bg-opacity-75 rounded">
-      <nav id="navbar-example2" class=" my-2 navbar px-3 rounded ">
+      {{!-- <nav id="navbar-example2" class=" my-2 navbar px-3 rounded ">
         <p class="navbar-brand m-auto">消 費 明 細</p>
-      </nav>
+      </nav> --}}
       <div class="expense-list mb-2 rounded border">
         <ul class="list-group list-group-flush">
           {{#each records}}

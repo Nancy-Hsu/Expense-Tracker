@@ -11,6 +11,9 @@ module.exports = {
         return `<option value='${category._id}'> ${category.name}</option >`
       }).join('')
       return options
+    },
+    ifCond: function (a, b, options) {
+      return a === b ? options.fn(this) : options.inverse(this)
     }
   }
 }

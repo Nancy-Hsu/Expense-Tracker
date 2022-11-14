@@ -9,7 +9,7 @@ if (process.env.NODE_ENV !== 'production') {
 // require('./config/mongoose')
 const { mongoose } = require('./config/mongoose')
 const exphbs = require('express-handlebars')
-const { helpers } = require('./helpers')
+const { helpers } = require('./helpers/hbs-helpers')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
 

@@ -4,7 +4,7 @@ const User = require('../../models/user')
 const crypto = require("crypto");
 const passport = require('passport')
 const bcrypt = require('bcryptjs')
-const useNodemailer = require('../../sendEmail')
+const useNodemailer = require('../../helpers/sendEmail')
 
 router.get('/login', (req, res) => {
   res.render('login')

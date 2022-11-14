@@ -16,15 +16,12 @@ body {
   font-weight: 900;
 }
 
-
-
 #new-form label::after,
 .require-mark::before,
 #edit-form label::after {
   content: " * ";
   color: red;
 }
-
 
 #user-input {
   background-color: rgb(222, 218, 218);
@@ -94,7 +91,8 @@ span {
 }
 
 #login-form button,
-#edit-form button {
+#edit-form button,
+.filter-button {
   color: blanchedalmond;
   background: linear-gradient(to bottom, #cf7777, #cd5c5c);
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
