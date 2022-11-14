@@ -7,13 +7,14 @@ const Category = require('../../models/category')
 const { conditionLists } = require('../../helpers/filter-helpers')
 
 router.get('/', (req, res) => {
+  let sumByCategory = ""
   const userId = req.user._id
   const { year, month, categoryId } = req.query
   const optionsSelected = req.query
   const conditions = [
     { userId: ObjectId(userId) }
   ].concat(conditionLists(optionsSelected))
-
+  
 
   Promise.all([Record.aggregate([{
     $match: { userId: ObjectId(userId) }
@@ -23,9 +24,10 @@ router.get('/', (req, res) => {
     $group: {
       _id: null,
       years: { $addToSet: { $dateToString: { date: "$date", format: "%Y" } } },
-      months: { $addToSet: { $dateToString: { date: "$date", format: "%m" } } }
+      months: { $addToSet: { $dateToString: { date: "$date", format: "%m" } } },
     }
   },
+  { $project: { __v: 0 } }
   ]), Category.aggregate([
     {
       $project: {
@@ -38,27 +40,27 @@ router.get('/', (req, res) => {
     }])
   ])
     .then(([dateResult, categories]) => {
+      console.log(dateResult)
       data = dateResult[0]
       data.categories = categories
 
-      return Record.aggregate([
-        {
-          $match: {
-            $and: conditions
-          }
-        },
+      return Promise.all([Record.aggregate([
+        { $match: { $and: conditions } },
         { $sort: { date: -1 } },
-        {
-          $project: {
-            __v: 0
-          }
-        }
-      ])
+        { $project: { __v: 0 } }
+      ]), Record.aggregate([
+        { $match: { $and: conditions } },
+        { $sort: { date: -1 } },
+        { $group: { _id: { $toString: '$categoryId' }, sum: { $sum: { '$toInt': "$amount" } } } },
+        { $project: { __v: 0 } }
+      ])])
     })
-    .then(result => {
+    .then(([result, sumCategory]) => {
+      console.log(sumCategory)
+      sumByCategory = sumCategory
       return Record.populate(result, { path: "categoryId", options: { lean: true } })
     })
-    .then(records => {
+    .then( records => {
 
       let totalAmount = records.reduce((total, record) =>
         total + record.amount, 0
@@ -67,7 +69,8 @@ router.get('/', (req, res) => {
         records,
         totalAmount,
         optionsSelected,
-        data
+        data,
+        sumByCategory
       })
     })
     .catch(err => res.render('error', { err }))

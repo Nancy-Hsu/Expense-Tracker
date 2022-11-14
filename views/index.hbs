@@ -1,4 +1,4 @@
-<div class="row my-3 d-flex justify-content-center p-2">
+<div class="row my-1 d-flex justify-content-center p-2">
   <div class="col-md-6">
     <div class="d-flex">
       <form action="/" method="get" class="col-sm-12 rounded d-flex" id="search-by-category">
@@ -34,7 +34,7 @@
             {{/each}}
           </select>
         </div>
-        <button class="filter-button btn" type="submit">GO</button>
+        <button class="filter-button btn w-100" type="submit">GO</button>
       </form>
       <div class="col-sm-6 ps-3">
         {{> message}}
@@ -42,28 +42,22 @@
 
 
     </div>
-    <div>
-      <div class="col-md-6 d-flex flex-column bg-light bg-opacity-75 rounded mt-2 p-2">
+    <div class="row p-2 mt-1">
+      <div class="col-md-6 d-flex flex-column bg-light bg-opacity-75 rounded">
         <div class="text-center">
           <p class="fs-4 p-2 m-0 text-secondary">總花費：<strong class="fs-1 text-dark">{{totalAmount}}</strong></p>
-          <nav id="navbar-example2" class=" my-1 navbar rounded ">
-            <p class="navbar-brand m-auto">消 費 明 細</p>
+          <nav id="navbar-example2" class="mt-1 navbar rounded ">
+            <p class="navbar-brand m-auto ">消 費 明 細 <i class="fas fa-arrow-down"></i></p>
           </nav>
         </div>
       </div>
       <div class="col-md-6">
-        <div>
+        <div class="bg-light rounded">
           <canvas id="myChart"></canvas>
         </div>
       </div>
     </div>
-    {{!-- <div class="mt-2 bg-light rounded">
-      <p class="fs-4 p-2 m-0 text-secondary">總花費：<strong class="fs-1 text-dark">{{totalAmount}}</strong></p>
-    </div> --}}
-    <div class="mt-2 px-2 py-1 bg-light bg-opacity-75 rounded">
-      {{!-- <nav id="navbar-example2" class=" my-2 navbar px-3 rounded ">
-        <p class="navbar-brand m-auto">消 費 明 細</p>
-      </nav> --}}
+    <div class="mt-1 p-2 bg-light bg-opacity-75 rounded">
       <div class="expense-list mb-2 rounded border">
         <ul class="list-group list-group-flush">
           {{#each records}}
@@ -117,5 +111,64 @@
       });
     return false;
   }
+
+  const categories = {{{ json data.categories }}}
+  const categorySum = {{{ json sumByCategory }}}
+
+  const labels = []
+  categories.map(category => category.name)
+  const numberData = []
+  categorySum.map(item =>
+    item.sum
+  )
+
+  categories.forEach(name => {
+    categorySum.filter(sum => {
+      if (name._id === sum._id) {
+        labels.push(name.name)
+        numberData.push(sum.sum)
+      }
+    })
+  })
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: '您的支出分析',
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(70, 191, 189, 0.2)',
+        'rgba(148, 159, 177, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132,1 )',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(70, 191, 189, 1)',
+        'rgba(148, 159, 177, 1)',
+      ],
+      borderWidth: 1,
+      data: numberData,
+    }]
+  };
+
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
 
 </script>
