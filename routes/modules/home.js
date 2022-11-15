@@ -8,6 +8,7 @@ const { conditionLists } = require('../../helpers/filter-helpers')
 
 router.get('/', (req, res) => {
   let sumByCategory = ""
+  let totalAmount = 0
   const userId = req.user._id
   const { year, month, categoryId } = req.query
   const optionsSelected = req.query
@@ -43,26 +44,31 @@ router.get('/', (req, res) => {
       data = dateResult[0]
       data.categories = categories
 
-      return Promise.all([Record.aggregate([
+      return Record.aggregate ([
         { $match: { $and: conditions } },
         { $sort: { date: -1 } },
-        { $project: { __v: 0 } }
-      ]), Record.aggregate([
-        { $match: { $and: conditions } },
-        { $sort: { date: -1 } },
-        { $group: { _id: { $toString: '$categoryId' }, sum: { $sum: { '$toInt': "$amount" } } } },
-        { $project: { __v: 0 } }
-      ])])
+        { $group: { 
+          _id: { $toString: '$categoryId' }, 
+          sum: { $sum: { '$toInt': "$amount" } },
+          data: { $push: { _id: "$_id", name: "$name", date: "$date", amount: "$amount", categoryId: "$categoryId" }}  
+        } },
+      ])
     })
-    .then(([result, sumCategory]) => {
-      sumByCategory = sumCategory
-      return Record.populate(result, { path: "categoryId", options: { lean: true } })
+    .then((results) => {
+      totalAmount = results.reduce((total, result) =>
+        total + result.sum, 0
+      )
+      sumByCategory = results
+      
+      let records = []
+      results.forEach(r => {
+        records = records.concat(r.data)
+        delete r.data
+      })
+      return Record.populate(records, { path: "categoryId", options: { lean: true } })
     })
     .then( records => {
 
-      let totalAmount = records.reduce((total, record) =>
-        total + record.amount, 0
-      )
       return res.render('index', {
         records,
         totalAmount,
