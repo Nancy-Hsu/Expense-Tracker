@@ -9,14 +9,17 @@
 | ------ | ----------- |
 | user1@example.com | 12345678 |
 
-
-![image](https://user-images.githubusercontent.com/108853120/202136103-8c868878-a182-4178-9372-2b06aab0e20c.png)
+<br />
 
 ## 功能
 - **註冊帳號 或 使用 FB 或 Gmail 登入**
-- 你可以重設密碼 (忘記是人之常情)
-- 依照月份篩選費用的種類，圖表支援，知道錢都花在那裡了!
-- 瀏覽所有花費並進行修改、刪除
+- **你可以重設密碼 (忘記是人之常情)**
+- **依照年、月份、種類篩選費用的種類，圖表支援，知道錢都花在那裡了!**
+- **瀏覽所有花費並進行修改、刪除，偷偷刪掉沒人知道(噓)**
+
+![image](https://user-images.githubusercontent.com/108853120/202136103-8c868878-a182-4178-9372-2b06aab0e20c.png)
+
+
 
 ## 安裝流程
 1. 請先確認有安裝 node.js 與 npm
@@ -40,8 +43,6 @@
 - 框架: Express 
 - ODM: Mongoose 
 - 資料庫: MongoDB
-- Express-Handlebars 
-- Bootstrap
-- Font-awesome 
+- 前端: Express-Handlebars 
 <br />
 <br />
