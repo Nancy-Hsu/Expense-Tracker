@@ -2,19 +2,21 @@
 來一起統計一下私房錢吧！
 <br />
 <br />
-![image](https://user-images.githubusercontent.com/108853120/188142020-620c0962-4130-4bfe-8e38-ff3eb216d3f7.png)
 
+![Screenshot 2022-11-14 at 22-04-32 私房錢底加](https://user-images.githubusercontent.com/108853120/202130997-2ad09b66-ba2e-4acd-ae1c-4f74f7160f26.png)
 也可以用虛擬帳號來體驗一下唷！
 | 帳號 | 密碼 |
 | ------ | ----------- |
 | user1@example.com | 12345678 |
 
 
+![image](https://user-images.githubusercontent.com/108853120/202136103-8c868878-a182-4178-9372-2b06aab0e20c.png)
+
 ## 功能
-- 註冊帳號或使用FB或Gmail登入
-- 瀏覽所有花費
-- 篩選費用的種類，知道錢都花在那裡了!
-- 對費用進行修改、刪除
+- **註冊帳號 或 使用 FB 或 Gmail 登入**
+- 你可以重設密碼 (忘記是人之常情)
+- 依照月份篩選費用的種類，圖表支援，知道錢都花在那裡了!
+- 瀏覽所有花費並進行修改、刪除
 
 ## 安裝流程
 1. 請先確認有安裝 node.js 與 npm
@@ -34,18 +36,12 @@
 7. 若欲暫停使用，按下 `ctrl + c` 即可
 
 ## 開發工具
-- Node.js 
-- Express 
+- 開發環境: Node.js 
+- 框架: Express 
+- ODM: Mongoose 
+- 資料庫: MongoDB
 - Express-Handlebars 
 - Bootstrap
 - Font-awesome 
-- Mongoose 
-- MongoDB
-- bcryptjs 
-- connect-flash
-- dotenv 
-- mongoose 
-- passport 
-- method-override 
 <br />
 <br />
