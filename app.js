@@ -1,7 +1,8 @@
 const express = require('express')
+require('express-async-errors')
 const session = require('express-session')
 const Store = require('express-session').Store;
-const MongooseStore = require('mongoose-express-session')(Store);
+const MongooseStore = require('mongoose-express-session')(Store)
 const usePassport = require('./config/passport')
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()

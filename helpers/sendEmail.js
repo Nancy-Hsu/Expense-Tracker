@@ -28,10 +28,10 @@ const sendMail = async (data) => {
     subject: data.subject,
     html: htmlToSend
   };
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) console.log(error);
-  });
-
+  await transporter.sendMail(mailOptions) 
+  // (error, info) => {
+  //   if (error) console.log(error);
+  // });
 }
 
 module.exports = sendMail

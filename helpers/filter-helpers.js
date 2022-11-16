@@ -1,11 +1,9 @@
 const mongoose = require('mongoose')
 const ObjectId = mongoose.Types.ObjectId
 
-const conditionLists = (data, condition) => {
+const conditionLists = data => {
   const { year, month, categoryId } = data
-  const conditions = [
-    // { userId: ObjectId(userId) }
-  ]
+  const conditions = []
   if (year) {
     conditions.push({ "$expr": { "$eq": [{ $toString: { $year: '$date' } }, year] } })
   }
@@ -13,7 +11,8 @@ const conditionLists = (data, condition) => {
     conditions.push({ "$expr": { "$eq": [{ $toString: { $month: '$date' } }, month] } })
   }
   if (categoryId) {
-    conditions.push({ "$expr": { "$eq": [{ $toString: "$categoryId" }, categoryId] } })
+    // conditions.push({ categoryId  })
+    conditions.push({ "$expr": { "$eq": [{ $toString: "$categoryId" }, { $toString: categoryId }] } })
   }
   return conditions
 }
